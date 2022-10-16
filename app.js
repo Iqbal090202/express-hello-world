@@ -1,11 +1,19 @@
-// const express = require("express");
-// const app = express();
-// const port = process.env.PORT || 3001;
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 3001;
 
-// app.get("/", (req, res) => res.type('html').send(html));
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
-// app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 
+app.get("/", (req, res) => {
+  res.json({ message: "API NODE JS" });
+});
 
 // const html = `
 // <!DOCTYPE html>
@@ -57,22 +65,3 @@
 //   </body>
 // </html>
 // `
-
-const express = require("express");
-const app = express();
-const port = process.env.PORT || 5000;
-
-app.use(express.json());
-app.use(
-  express.urlencoded({
-    extended: true,
-  })
-);
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
-
-app.get("/", (req, res) => {
-  res.json({ message: "API NODE JS" });
-});
